@@ -246,18 +246,5 @@
             <p style="margin-top: 20px; font-size: 14px; color: #999;">Departamento de Cyber Security</p>
         </footer>
     </div>
-    <!-- Script de Seguimiento para Gophish -->
-    <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const rid = urlParams.get('rid');
-        if (rid) {
-            // Esto le avisa a Gophish que el usuario hizo clic
-            fetch('https://external-implosion-pavestone.ngrok-free.dev/?rid=' + rid, {
-                mode: 'no-cors'
-            }).then(() => {
-                console.log('Clic registrado en Gophish');
-            }).catch(err => console.error('Error al registrar:', err));
-        }
-    </script>
 </body>
 </html>
