@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notificación de Seguridad - Panalab</title>
+    <style>
+        :root {
+            --primary: #004a99;
+            --secondary: #d93025;
+            --text: #1c1e21;
+            --bg: #f0f2f5;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .notification-container {
+            background-color: var(--card-bg);
+            max-width: 800px;
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        header {
+            background-color: #fff;
+            padding: 30px;
+            text-align: center;
+            border-bottom: 4px solid var(--secondary);
+        }
+
+        .logo {
+            max-width: 250px;
+            height: auto;
+        }
+
+        .alert-banner {
+            background-color: var(--secondary);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .alert-banner h1 {
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        main {
+            padding: 40px;
+        }
+
+        .intro-text {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .detection-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .point-card {
+            display: flex;
+            flex-direction: column;
+            background: #f9f9f9;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #eee;
+            transition: transform 0.3s ease;
+        }
+
+        .point-card:hover {
+            transform: scale(1.02);
+        }
+
+        .point-image {
+            width: 100%;
+            height: 200px;
+            background-color: #eee;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .point-content {
+            padding: 25px;
+        }
+
+        .point-content h2 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .point-content h2::before {
+            content: '🚩';
+            margin-right: 10px;
+        }
+
+        .point-content p {
+            line-height: 1.5;
+            color: #555;
+        }
+
+        /* Estilos específicos para las imágenes de alerta */
+        .subject-img { background-image: url('https://img.freepik.com/premium-vector/phishing-attack-warning-alert-notification_101884-257.jpg'); }
+        .body-img { background-image: url('https://usercentrics.com/es/wp-content/uploads/sites/6/2024/08/uc_blog_1000x1000_Proteccion-de-datos-para-emails_b.jpg'); }
+        .link-img { background-image: url('https://www.afoe.org/wp-content/uploads/2018/01/enlace-web-url.jpg'); }
+
+        .overlay-label {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(217, 48, 37, 0.9);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: #f8f9fa;
+            padding: 30px;
+            text-align: center;
+            border-top: 1px solid #eee;
+        }
+
+        .btn-understood {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-transform: uppercase;
+        }
+
+        .btn-understood:hover {
+            background-color: #003670;
+        }
+
+        @media (min-width: 768px) {
+            .detection-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+            .intro-text {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="notification-container">
+        <header>
+            <img src="https://www.panalab.com/wp-content/uploads/2024/02/logo_panalab_color.png" alt="Panalab" class="logo">
+        </header>
+        
+        <div class="alert-banner">
+            <h1>Simulacro de Phishing Detectado</h1>
+        </div>
+
+        <main>
+            <p class="intro-text">
+                Has hecho clic en un correo electrónico diseñado para poner a prueba tu capacidad de detección de amenazas.
+                <strong>En un ataque real, tus datos podrían haber sido comprometidos.</strong>
+            </p>
+
+            <div class="detection-grid">
+                <!-- Punto 1: El Asunto -->
+                <div class="point-card">
+                    <div class="point-image subject-img">
+                        <span class="overlay-label">EL ASUNTO</span>
+                    </div>
+                    <div class="point-content">
+                        <h2>Analiza el Asunto</h2>
+                        <p>Busca palabras de <b>urgencia extrema</b> o amenazas. Los correos de Phishing suelen usar ganchos como "Urgente", "Bloqueo" o "Falla en su cuenta" para forzarte a actuar rápido.</p>
+                    </div>
+                </div>
+
+                <!-- Punto 2: El Cuerpo -->
+                <div class="point-card">
+                    <div class="point-image body-img">
+                        <span class="overlay-label">EL CUERPO</span>
+                    </div>
+                    <div class="point-content">
+                        <h2>Revisa el Mensaje</h2>
+                        <p>Desconfía de <b>saludos genéricos</b> (ej: "Estimado empleado") y mala gramática. IT nunca te pedirá validar claves o sincronizar sistemas a través de enlaces externos.</p>
+                    </div>
+                </div>
+
+                <!-- Punto 3: Los Enlaces -->
+                <div class="point-card">
+                    <div class="point-image link-img">
+                        <span class="overlay-label">LOS ENLACES</span>
+                    </div>
+                    <div class="point-content">
+                        <h2>Verifica los Links</h2>
+                        <p>Antes de hacer clic, <b>pasa el ratón (hover)</b> sobre el botón. Verás la URL real abajo. Si no es un dominio oficial de Panalab, es una trampa.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div style="margin-bottom: 25px; padding: 15px; background: #eef2f7; border-radius: 10px; font-size: 15px;">
+                <p>Realiza un test de identificación aprobado por Google: <a href="https://phishingquiz.withgoogle.com/" target="_blank" style="color: var(--primary); font-weight: bold; text-decoration: none;">https://phishingquiz.withgoogle.com/</a></p>
+            </div>
+            <button class="btn-understood" onclick="window.close()">He aprendido la lección</button>
+            <p style="margin-top: 20px; font-size: 14px; color: #999;">Departamento de Cyber Security</p>
+        </footer>
+    </div>
+    <!-- Script de Seguimiento para Gophish -->
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const rid = urlParams.get('rid');
+        if (rid) {
+            // Esto le avisa a Gophish que el usuario hizo clic
+            fetch('https://external-implosion-pavestone.ngrok-free.dev/?rid=' + rid, {
+                mode: 'no-cors'
+            }).then(() => {
+                console.log('Clic registrado en Gophish');
+            }).catch(err => console.error('Error al registrar:', err));
+        }
+    </script>
+</body>
+</html>
